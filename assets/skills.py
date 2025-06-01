@@ -17,3 +17,7 @@ class Lick:
     def __init__(self):
         self.level = 1
         self.damage = 100
+class Claw:
+    def __init__(self):
+        self.level = 1
+        self.damage = 5
