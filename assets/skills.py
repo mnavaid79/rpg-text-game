@@ -12,3 +12,8 @@ class Shoot:
     def __init__(self):
         self.level = 1
         self.damage = 10
+
+class Lick:
+    def __init__(self):
+        self.level = 1
+        self.damage = 100

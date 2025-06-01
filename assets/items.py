@@ -9,3 +9,7 @@ class Sword:
 class Bow:
     def __init__(self):
         self.level = 1
+
+class Tongue:
+    def __init__(self):
+        self.level = 1
