@@ -1,15 +1,21 @@
-class Staff:
-    def __init__(self):
+class Items: 
+    def __init__(self, name):
+        self.name = name
         self.level = 1
 
-class Sword:
+class Staff(Items):
     def __init__(self):
-        self.level = 1
+        super().__init__('staff')
 
-class Bow:
+class Sword(Items):
     def __init__(self):
-        self.level = 1
+        super().__init__('sword')
 
-class Tongue:
+class Bow(Items):
     def __init__(self):
-        self.level = 1
+        super().__init__('bow')
+
+class Tongue(Items):
+    def __init__(self):
+        super().__init__('tongue')
+
