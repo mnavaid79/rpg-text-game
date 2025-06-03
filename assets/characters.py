@@ -1,10 +1,12 @@
 from .items import *
 from .skills import *
+from colorama import Fore, Style
 
 class Character:
     def __init__(self, name, health, mana, armor, attribute, items=None, skills=None):
         self.name = name
         self.health = health
+        self.max_health = health
         self.mana = mana
         self.armor = armor
         self.experience = 0
@@ -12,6 +14,28 @@ class Character:
         self.attribute = attribute
         self.items = items or {}
         self.skills = skills or {}
+    
+    def draw_health_bar(self):
+        bar_length = 60
+        filled_length = round((self.health / self.max_health) * bar_length)
+        empty_length = bar_length - filled_length
+
+        health_bar = "█" * filled_length + "-" * empty_length
+
+        # Color coding based on remaining health
+        if self.health > self.max_health * 0.6:
+            color = Fore.GREEN
+        elif self.health > self.max_health * 0.3:
+            color = Fore.YELLOW
+        else:
+            color = Fore.RED
+
+        print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
+
+    def use_ability(self, ability, target):
+        damage = self.skills[ability].damage
+        target.health -= damage
+        return target.draw_health_bar()
 
 # Hero classes
 class Mage(Character):
