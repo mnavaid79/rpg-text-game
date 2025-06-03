@@ -6,7 +6,7 @@ class Skills:
 
 class Fireball(Skills):
     def __init__(self):
-        super().__init__(10, name='fireball')
+        super().__init__(10, 'fireball')
 
 class Shoot(Skills):
     def __init__(self):
