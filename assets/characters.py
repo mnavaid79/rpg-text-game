@@ -9,34 +9,45 @@ class Character:
         self.max_health = health
         self.mana = mana
         self.armor = armor
+        self.max_armor = armor
         self.experience = 0
         self.level = 1
         self.attribute = attribute
         self.items = items or {}
         self.skills = skills or {}
-    
+
     def draw_health_bar(self):
         bar_length = 50
-        filled_length = round((self.health / self.max_health) * bar_length)
-        empty_length = bar_length - filled_length
 
-        health_bar = "█" * filled_length + "-" * empty_length
+        # HEALTH: Scale based on max_health only (ensures consistent width)
+        filled_health = round((self.health / self.max_health) * bar_length)
 
-        # Color coding based on remaining health
-        if self.health > self.max_health * 0.6:
-            color = Fore.GREEN
-        elif self.health > self.max_health * 0.3:
-            color = Fore.YELLOW
-        else:
-            color = Fore.RED
+        # ARMOR: Overlay, scaled separately (armor shouldn't shrink health portion)
+        filled_armor = round((self.armor / self.max_health) * bar_length) if self.armor > 0 else 0
 
-        print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
+        # Construct the combined bar
+        armor_section = Fore.LIGHTBLACK_EX + "▒" * filled_armor  # Light gray for armor
+        health_section = Fore.RED + "█" * (filled_health - filled_armor)  # Red for health
+        empty_space = "-" * (bar_length - filled_health)  # Remaining empty space
+
+        # Display bar with both armor and health overlayed correctly
+        bar_display = f"[{armor_section}{health_section}{empty_space}]{Style.RESET_ALL}"
+
+        print(f"{self.name} Health & Armor: {bar_display} {self.health}/{self.max_health} | {self.armor}/{self.max_armor}")
 
     def use_ability(self, selection, target):
         ability = list(self.skills)[int(selection) - 1]
         damage = self.skills[ability].damage
+
+        if target.armor > 0:
+            absorbed = min(target.armor, damage)
+            target.armor -= absorbed
+            damage -= absorbed
+
         target.health -= damage
         return target.draw_health_bar()
+
+
 
 # Hero classes
 class Mage(Character):
