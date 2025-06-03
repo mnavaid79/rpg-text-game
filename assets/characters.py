@@ -16,7 +16,7 @@ class Character:
         self.skills = skills or {}
     
     def draw_health_bar(self):
-        bar_length = 60
+        bar_length = 50
         filled_length = round((self.health / self.max_health) * bar_length)
         empty_length = bar_length - filled_length
 
