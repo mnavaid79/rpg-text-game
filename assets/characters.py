@@ -32,7 +32,8 @@ class Character:
 
         print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
 
-    def use_ability(self, ability, target):
+    def use_ability(self, selection, target):
+        ability = list(self.skills)[int(selection) - 1]
         damage = self.skills[ability].damage
         target.health -= damage
         return target.draw_health_bar()
