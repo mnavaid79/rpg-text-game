@@ -1,25 +1,26 @@
 class Skills:
-    def __init__(self, damage, name):
+    def __init__(self, damage, name, mana):
         self.damage = damage
         self.name = name
         self.level = 1
+        self.mana = mana
 
 class Fireball(Skills):
     def __init__(self):
-        super().__init__(10, 'fireball')
+        super().__init__(10, 'fireball', 10)
 
 class Shoot(Skills):
     def __init__(self):
-        super().__init__(10, 'shoot')
+        super().__init__(10, 'shoot', 10)
 
 class Slash(Skills):
     def __init__(self):
-        super().__init__(10, 'slash')
+        super().__init__(10, 'slash', 10)
 
 class Claw(Skills):
     def __init__(self,):
-        super().__init__(5, 'claw')
+        super().__init__(5, 'claw', 5)
 
 class Lick(Skills):
     def __init__(self):
-        super().__init__(20, 'lick')
+        super().__init__(20, 'lick', 30)

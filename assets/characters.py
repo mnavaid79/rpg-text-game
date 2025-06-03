@@ -8,6 +8,7 @@ class Character:
         self.health = health
         self.max_health = health
         self.mana = mana
+        self.max_mana = mana
         self.armor = armor
         self.max_armor = armor
         self.experience = 0
@@ -38,10 +39,26 @@ class Character:
 
         print(f"{self.name} Health & Armor: {bar_display} {self.health}/{self.max_health} | {self.armor}/{self.max_armor}")
 
+    def draw_mana_bar(self):
+        bar_length = 50
+
+        # MANA: Scale based on max_health only (ensures consistent width)
+        filled_mana = round((self.mana / self.max_mana) * bar_length)
+
+        # Construct the combined bar
+        mana_section = Fore.LIGHTBLUE_EX + "█" * (filled_mana)  # Blue for mana
+        empty_space = "-" * (bar_length - filled_mana)  # Remaining empty space
+
+        # Display bar with both armor and health overlayed correctly
+        bar_display2 = f"[{mana_section}{empty_space}]{Style.RESET_ALL}"
+
+        print(f"{self.name} Mana remaining: {bar_display2} {self.mana}/{self.max_mana}")
 
     def use_ability(self, selection, target):
         ability = list(self.skills)[int(selection) - 1]
         damage = self.skills[ability].damage
+        mana1 = self.skills[ability].mana
+        self.mana -= mana1
 
         if target.armor > 0:
             absorbed = min(target.armor, damage)
@@ -49,7 +66,10 @@ class Character:
             damage -= absorbed
 
         target.health -= damage
-        return target.draw_health_bar()
+        target.draw_health_bar()
+        self.draw_mana_bar()
+
+
     
 
     def gain_experience(self, amount):
@@ -94,7 +114,7 @@ class MODOK(Character):
 # Enemy classes
 class Rat(Character):
     def __init__(self):
-        super().__init__('Rat', health=30, mana=10, armor=0, attribute="Enemy",
+        super().__init__('Rat', health=30, mana=10, armor=50, attribute="Enemy",
                          skills={'claw': Claw()})
         self.give_experience = 10
 
