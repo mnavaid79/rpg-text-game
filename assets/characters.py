@@ -16,7 +16,7 @@ class Character:
         self.skills = skills or {}
     
     def draw_health_bar(self):
-        bar_length = 50
+        bar_length = 60
         filled_length = round((self.health / self.max_health) * bar_length)
         empty_length = bar_length - filled_length
 
@@ -31,6 +31,11 @@ class Character:
             color = Fore.RED
 
         print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
+
+    def use_ability(self, ability, target):
+        damage = self.skills[ability].damage
+        target.health -= damage
+        return target.draw_health_bar()
 
 # Hero classes
 class Mage(Character):
