@@ -1,14 +1,25 @@
-class Fireball:
-    def __init__(self):
+class Skills:
+    def __init__(self, damage, name):
+        self.damage = damage
+        self.name = name
         self.level = 1
-        self.damage = 10
 
-class Slash:
+class Fireball(Skills):
     def __init__(self):
-        self.level = 1
-        self.damage = 10
+        super().__init__(10, name='fireball')
 
-class Shoot:
+class Shoot(Skills):
     def __init__(self):
-        self.level = 1
-        self.damage = 10
+        super().__init__(10, 'shoot')
+
+class Slash(Skills):
+    def __init__(self):
+        super().__init__(10, 'slash')
+
+class Claw(Skills):
+    def __init__(self,):
+        super().__init__(5, 'claw')
+
+class Lick(Skills):
+    def __init__(self):
+        super().__init__(20, 'lick')

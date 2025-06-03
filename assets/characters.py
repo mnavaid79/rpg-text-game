@@ -1,41 +1,47 @@
-from items import Staff
-from items import Sword
-from items import Bow
-from skills import Fireball
-from skills import Slash
-from skills import Shoot
+from .items import *
+from .skills import *
 
-
-class Mage:
-    def __init__(self):
-        self.health = 100
-        self.mana = 100
-        self.armor = 10
+class Character:
+    def __init__(self, name, health, mana, armor, attribute, items=None, skills=None):
+        self.name = name
+        self.health = health
+        self.mana = mana
+        self.armor = armor
         self.experience = 0
         self.level = 1
-        self.items = Staff()
-        self.skills = Fireball()
+        self.attribute = attribute
+        self.items = items or {}
+        self.skills = skills or {}
 
-class Knight:
+# Hero classes
+class Mage(Character):
     def __init__(self):
-        self.health = 100
-        self.mana = 20
-        self.armor = 100
-        self.experience = 0
-        self.level = 1
-        self.items = Sword()
-        self.skills = Slash()
+        super().__init__('Mage', health=100, mana=100, armor=10, attribute="Hero",
+                         items={'staff': Staff()}, skills={'fireball': Fireball(), 'slash': Slash()})
 
-class Ranger:
+class Knight(Character):
     def __init__(self):
-        self.health = 100
-        self.mana = 50
-        self.armor = 50
-        self.experience = 0
-        self.level = 1
-        self.items = Bow()
-        self.skills = Shoot()
+        super().__init__('Knight', health=100, mana=20, armor=100, attribute="Hero",
+                         items={'sword': Sword()}, skills={'slash': Slash()})
 
-m = Mage()
-print(m.skills)
-print(m.items)
+class Ranger(Character):
+    def __init__(self):
+        super().__init__('Ranger', health=100, mana=50, armor=50, attribute="Hero",
+                         items={'bow': Bow()}, skills={'shoot': Shoot()})
+
+# Boss class
+class MODOK(Character):
+    def __init__(self):
+        super().__init__('Modok', health=1000, mana=100, armor=100, attribute="Boss",
+                         items={'tongue': Tongue()}, skills={'lick': Lick()})
+
+# Enemy classes
+class Rat(Character):
+    def __init__(self):
+        super().__init__('Rat', health=30, mana=10, armor=0, attribute="Enemy",
+                         skills={'claw': Claw()})
+
+class Ogre(Character):
+    def __init__(self):
+        super().__init__('Ogre', health=80, mana=40, armor=40, attribute="Enemy",
+                         items={'sword': Sword()}, skills={'slash': Slash()})
