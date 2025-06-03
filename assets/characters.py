@@ -68,14 +68,6 @@ class Character:
             print(f"{self.name} defeated {enemy.name} and gained {enemy.give_experience} XP!")
 
 
-
-
-
-    def use_ability(self, ability, target):
-        damage = self.skills[ability].damage
-        target.health -= damage
-        return target.draw_health_bar()
-
 # Hero classes
 class Mage(Character):
     def __init__(self):
