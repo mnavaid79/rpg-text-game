@@ -35,4 +35,13 @@ target = rats[target_choice]
 # Use ability
 player.use_ability(ability, target)
 
+while player.health > 0:
+    abilities = list(r1.skills.keys())
+    print('Available abilities:')
+    for i, abilities in enumerate(abilities, 1):
+        print(f"{i}. {abilities}")
+        ability = input("Choose an ability to use: \n")
+    
+    r1.use_ability(ability, player)
+
 print("\nThe battle continues...")
