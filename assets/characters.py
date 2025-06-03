@@ -32,6 +32,11 @@ class Character:
 
         print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
 
+    def use_ability(self, ability, target):
+        damage = self.skills[ability].damage
+        target.health -= damage
+        return target.draw_health_bar()
+
 # Hero classes
 class Mage(Character):
     def __init__(self):
