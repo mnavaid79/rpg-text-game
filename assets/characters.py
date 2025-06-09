@@ -22,11 +22,6 @@ class Character:
 
     def draw_health_bar(self):
         bar_length = 50
-<<<<<<< HEAD
-        filled_length = round((self.health / self.max_health) * bar_length)
-        empty_length = bar_length - filled_length
-=======
->>>>>>> be3160cf5db20f4066960a0e36bb3f1bbadcef34
 
         # HEALTH: Scale based on max_health only (ensures consistent width)
         filled_health = round((self.health / self.max_health) * bar_length)
@@ -34,14 +29,10 @@ class Character:
         # ARMOR: Overlay, scaled separately (armor shouldn't shrink health portion)
         filled_armor = round((self.armor / self.max_health) * bar_length) if self.armor > 0 else 0
 
-<<<<<<< HEAD
-        print(f"{self.name} Health: {color}[{health_bar}] {self.health}/{self.max_health}{Style.RESET_ALL}")
-=======
         # Construct the combined bar
         armor_section = Fore.LIGHTBLACK_EX + "▒" * filled_armor  # Light gray for armor
         health_section = Fore.RED + "█" * (filled_health - filled_armor)  # Red for health
         empty_space = "-" * (bar_length - filled_health)  # Remaining empty space
->>>>>>> be3160cf5db20f4066960a0e36bb3f1bbadcef34
 
         # Display bar with both armor and health overlayed correctly
         bar_display = f"[{armor_section}{health_section}{empty_space}]{Style.RESET_ALL}"
@@ -77,9 +68,6 @@ class Character:
             damage -= absorbed
 
         target.health -= damage
-<<<<<<< HEAD
-        return target.draw_health_bar()
-=======
         target.draw_health_bar()
         self.draw_mana_bar()
 
@@ -101,7 +89,6 @@ class Character:
             self.gain_experience(enemy.give_experience)
             print(f"{self.name} defeated {enemy.name} and gained {enemy.give_experience} XP!")
 
->>>>>>> be3160cf5db20f4066960a0e36bb3f1bbadcef34
 
 # Hero classes
 class Mage(Character):
