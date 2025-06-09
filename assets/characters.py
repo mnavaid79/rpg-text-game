@@ -58,8 +58,10 @@ class Character:
         ability = list(self.skills)[int(selection) - 1]
         damage = self.skills[ability].damage
         mana1 = self.skills[ability].mana
-        self.mana -= mana1
-
+        if mana1 > self.mana:
+            print("Not enough mana to cast selected ability!")
+        else :
+            self.mana -= mana1
         if target.armor > 0:
             absorbed = min(target.armor, damage)
             target.armor -= absorbed
