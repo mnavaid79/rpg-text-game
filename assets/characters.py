@@ -104,11 +104,11 @@ class MODOK(Enemy):
 
 # Enemy classes
 class Rat(Enemy):
-    def __init__(self):
-        super().__init__('Rat', 'enemy',  health=30, mana=1000, armor=40, give_experience=10,
+    def __init__(self, name):
+        super().__init__(name, 'enemy',  health=30, mana=1000, armor=40, give_experience=10,
                          skills={'claw': Claw()})
 
 class Ogre(Enemy):
-    def __init__(self):
-        super().__init__('Ogre', 'enemy',  health=80, mana=1000, armor=40, give_experience=20,
+    def __init__(self, name):
+        super().__init__(name, 'enemy',  health=80, mana=1000, armor=40, give_experience=20,
                          items={'sword': Sword()}, skills={'slash': Slash()})
