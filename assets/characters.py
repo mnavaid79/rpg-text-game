@@ -37,7 +37,7 @@ class Entity:
         damage = self.skills[ability].damage
         mana_cost = self.skills[ability].mana
         if self.mana < mana_cost:
-            return print("Insufficent mana for choosen skill, pick another ability!")
+            return print("Insufficent mana for choosen skill, pick another ability!!")
         else:
             self.mana -= mana_cost
         if target.armor > 0:
