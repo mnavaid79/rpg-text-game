@@ -1,4 +1,5 @@
 from assets.characters import *
+import random
 
 heros = [Ranger, Knight, Mage]
 
@@ -16,21 +17,25 @@ print(f"\nYou enter Room 1 and encounter two rats!\n")
 
 # Encounter with rats
 rat1 = Rat()
+rat1.name = 'Rat1'
 rat2 = Rat()
+rat2.name = 'Rat2'
 enemies = [rat1, rat2]
 
-while player.health > 0:
-
+while player.health > 0 and enemies:
+    # Player Turn
     abilities = list(player.skills.keys())
-    print('Available abilities:')
-    for i, abilities in enumerate(abilities, 1):
-        print(f"{i}. {abilities}")
-    ability = input("Choose an ability to use: \n")
+    print("\n====== Player Turn ======")
+    print("Available abilities:")
+    for i, ability in enumerate(abilities, 1):
+        print(f"{i}. {ability}")
+
+    ability = int(input("\nChoose an ability to use: "))
 
     # Target selection
-    print("Choose a target:")
+    print("\nChoose a target:")
     for i, enemy in enumerate(enemies, 1):
-        print(f"{i}. {enemy.name}{i}")
+        print(f"{i}. {enemy.name}")
 
     target_choice = int(input("\nEnter the number of your choice: ")) - 1
     target = enemies[target_choice]
@@ -38,12 +43,26 @@ while player.health > 0:
     # Use ability
     player.use_ability(ability, target)
 
-    # Gain experience if target is defeated
+    # Enemy defeat check
     if target.health <= 0:
         player.defeat_enemy(target)
-        enemies.remove(target) # Remove enemy from list of enemies alive
-    
-    if len(enemies) == 0: # All enemies defeated
+        enemies.remove(target)  # Remove defeated enemy
+        print(f"\n{target.name} has been defeated!")
+
+    # Enemy Turn
+    print("\n====== Enemy Turn ======")
+    for enemy in enemies:
+        if enemy.health > 0:
+            enemy_ability = '1'
+            enemy.use_ability(enemy_ability, player)
+            print(f"{enemy.name} used {enemy_ability} on {player.name}!")
+
+    # Player defeat check
+    if player.health <= 0:
+        print("\nYou have been defeated! Game Over.")
+        break
+
+    if not enemies:
         print("\nAll enemies defeated! Advance to next room...")
         break
 
