@@ -5,6 +5,10 @@ class Skills:
         self.level = 1
         self.mana = mana
 
+class Punch(Skills):
+    def __init__(self):
+        super().__init__(5, 'punch', 0)
+
 class Fireball(Skills):
     def __init__(self):
         super().__init__(10, 'fireball', 10)
