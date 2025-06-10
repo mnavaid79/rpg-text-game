@@ -36,8 +36,10 @@ class Entity:
         ability = list(self.skills)[int(selection) - 1]
         damage = self.skills[ability].damage
         mana_cost = self.skills[ability].mana
-        self.mana -= mana_cost
-
+        if self.mana < mana_cost:
+            return print("Insufficent mana for choosen skill, pick another ability!")
+        else:
+            self.mana -= mana_cost
         if target.armor > 0:
             absorbed = min(target.armor, damage)
             target.armor -= absorbed
