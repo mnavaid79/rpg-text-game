@@ -42,5 +42,9 @@ while player.health > 0:
     if target.health <= 0:
         player.defeat_enemy(target)
         enemies.remove(target) # Remove enemy from list of enemies alive
+    
+    if len(enemies) == 0: # All enemies defeated
+        print("\nAll enemies defeated! Advance to next room...")
+        break
 
     print("\nThe battle continues...\n")
