@@ -11,7 +11,7 @@ class Punch(Skills):
 
 class Fireball(Skills):
     def __init__(self):
-        super().__init__(10, 'fireball', 10)
+        super().__init__(10, 'fireball', 10) 
 
 class Shoot(Skills):
     def __init__(self):

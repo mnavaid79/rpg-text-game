@@ -20,7 +20,7 @@ room = int(input("Pick a room (1-2): "))
 
 match room:
     case 1:
-        level_1.level1_stage1_room1(player, enemies=[Rat("Rat1"), Ogre("Ogre1")])
+        level_1.level1_stage1_room1(player, enemies=[Rat("Rat1"), Rat("Rat2")])
     case 2:
         level_1.level1_stage1_room2(player, enemies=[Rat("Rat1"), Ogre("Ogre1")])
     case _:
@@ -36,8 +36,11 @@ match room:
     case 1:
         level_1.level1_stage3_room1(player, enemies=[Rat("Rat1"), Rat("Rat2"), Rat("Rat3")])
     case 2:
-        print("") ## Treasure room
+        level_1.level1_stage3_room2(player)
     case 3:
         level_1.level1_stage3_room3(player, enemies=[Ogre("Ogre1"), Ogre("Ogre2"), Rat("Rat1")])
     case _:
         print("Invalid room number.")
+
+## Stage 4
+level_1.level1_stage4_room1(player, enemies=[MODOK("MODOK")])
