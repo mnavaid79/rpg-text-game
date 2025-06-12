@@ -74,6 +74,22 @@ class Hero(Entity):
         if hasattr(enemy, 'give_experience'):
             self.gain_experience(enemy.give_experience)
             print(f"{self.name} defeated {enemy.name} and gained {enemy.give_experience} XP!")
+    
+def consumeItemMana(self, item_name):
+    item = self.items.get(item_name)
+    if item:
+        if isinstance(item, Orb):
+            self.max_mana += item.val
+            print(f"{self.name} used {item.name} and increased max mana by {item.val}!")
+        else:
+            self.mana = min(self.max_mana, self.mana + item.val)
+            print(f"{self.name} used {item.name} and restored {item.val} mana!")
+
+        del self.items[item_name]
+        self.draw_mana_bar()
+    else:
+        print("Item not found or already used.")
+
 
 class Enemy(Entity):
     def __init__(self, name, attribute, health, mana, armor, give_experience, items=None, skills=None):
@@ -83,7 +99,7 @@ class Enemy(Entity):
 # Hero classes
 class Mage(Hero):
     def __init__(self):
-        super().__init__('Mage', 'hero', health=100, mana=100, armor=10,
+        super().__init__('Mage', 'hero', health=100, mana=200, armor=100,
                          items={'staff': Staff()}, skills={'punch': Punch(), 'fireball': Fireball()})
 
 class Knight(Hero):
@@ -98,17 +114,17 @@ class Ranger(Hero):
 
 # Boss class
 class MODOK(Enemy):
-    def __init__(self):
+    def __init__(self, name):
         super().__init__('Modok', 'enemy',  health=1000, mana=1000, armor=100, give_experience=80,
                          items={'tongue': Tongue()}, skills={'lick': Lick()})
 
 # Enemy classes
 class Rat(Enemy):
     def __init__(self, name):
-        super().__init__(name, 'enemy',  health=30, mana=1000, armor=40, give_experience=10,
+        super().__init__(name, 'enemy',  health=10, mana=1000, armor=10, give_experience=10,
                          skills={'claw': Claw()})
 
 class Ogre(Enemy):
     def __init__(self, name):
-        super().__init__(name, 'enemy',  health=80, mana=1000, armor=40, give_experience=20,
+        super().__init__(name, 'enemy',  health=10, mana=1000, armor=10, give_experience=20,
                          items={'sword': Sword()}, skills={'slash': Slash()})
