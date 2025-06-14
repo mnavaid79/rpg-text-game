@@ -27,6 +27,8 @@ def level1_stage0_room1(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -40,8 +42,8 @@ def level1_stage0_room1(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -81,6 +83,8 @@ def level1_stage1_room1(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -94,8 +98,8 @@ def level1_stage1_room1(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -134,6 +138,8 @@ def level1_stage1_room2(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -147,8 +153,8 @@ def level1_stage1_room2(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -188,6 +194,8 @@ def level1_stage2_room1(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -201,8 +209,8 @@ def level1_stage2_room1(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -243,6 +251,8 @@ def level1_stage3_room1(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -256,8 +266,8 @@ def level1_stage3_room1(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -329,6 +339,8 @@ def level1_stage3_room3(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -342,8 +354,8 @@ def level1_stage3_room3(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
@@ -382,6 +394,8 @@ def level1_stage4_room1(player, enemies):
 
         # Use ability
         player.use_ability(ability, target)
+        lp = list(player.skills.keys())
+        print(f"{player.name} used {lp[ability - 1]} on {enemy.name}!")
 
         # Enemy defeat check
         if target.health <= 0:
@@ -395,8 +409,8 @@ def level1_stage4_room1(player, enemies):
             if enemy.health > 0:
                 enemy_ability = 0
                 enemy.use_ability(enemy_ability, player)
-                l = list(enemy.skills.keys())
-                print(f"{enemy.name} used {l[enemy_ability]} on {player.name}!")
+                le = list(enemy.skills.keys())
+                print(f"{enemy.name} used {le[enemy_ability]} on {player.name}!")
 
         # Player defeat check
         if player.health <= 0:
