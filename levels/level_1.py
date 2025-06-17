@@ -1,4 +1,4 @@
-from assets.items import manaPotionSmall, manaPotionBig, manaPotionLarge, manaOrb, Orb, Potion
+from assets.items import healthPotionSmall, healthPotionBig, healthPotionLarge, healthOrb, manaPotionSmall, manaPotionBig, manaPotionLarge, manaOrb, Orb, Potion
 #### ==== Stage 0 ==== ####
 
     # == Room 1 == #
@@ -311,7 +311,6 @@ def level1_stage3_room2(player):
         player.draw_mana_bar()
     else:
         print("Invalid choice. No item selected.")
-
 
 ## Room 3
 
