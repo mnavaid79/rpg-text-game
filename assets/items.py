@@ -24,12 +24,28 @@ class manaPotionLarge(Potion):
     def __init__(self, name):
         super().__init__(name, 50)
 
+class healthPotionSmall(Potion):
+    def __init__(self, name):
+        super().__init__(name, 10)
+
+class healthPotionBig(Potion):
+    def __init__(self, name):
+        super().__init__(name, 30)
+
+class healthPotionLarge(Potion):
+    def __init__(self, name):
+        super().__init__(name, 50)
+
 class Orb(Consumables):
     def __init__(self, name, val):
         super().__init__(name)
         self.val = val
 
 class manaOrb(Orb):
+    def __init__(self, name):
+        super().__init__(name, 20)
+
+class healthOrb(Orb):
     def __init__(self, name):
         super().__init__(name, 20)
 

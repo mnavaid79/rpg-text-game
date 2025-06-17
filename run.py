@@ -13,6 +13,7 @@ player = heros[choice]()
 print(f"\nYour Choice: {player.name}")
 
 ## Stage 0
+
 level_1.level1_stage0_room1(player, enemies=[Rat("Rat1"), Rat("Rat2")])
 
 ## Stage 1
