@@ -287,7 +287,9 @@ def level1_stage3_room2(player):
 
     treasures = [
         manaPotionBig("Big Mana Potion"),
-        manaOrb("Mana Orb (!Increases max mana!)")
+        healthPotionBig("Big Health Potion"),
+        manaOrb("Mana Orb"),
+        healthOrb("Health Orb")
     ]
 
     for i, item in enumerate(treasures, 1):
@@ -298,16 +300,9 @@ def level1_stage3_room2(player):
     if choice.isdigit() and 1 <= int(choice) <= len(treasures):
         chosen_item = treasures[int(choice) - 1]
         player.items[chosen_item.name] = chosen_item
-
-        # Apply effect
-        if isinstance(chosen_item, Orb):
-            player.max_mana += chosen_item.val
-            print(f"\nYour max mana increased by {chosen_item.val}!")
-        elif isinstance(chosen_item, Potion):
-            player.mana = min(player.max_mana, player.mana + chosen_item.val)
-            print(f"\nYou restored {chosen_item.val} mana!")
-
-        print(f"\nYou picked up: {chosen_item.name} (+{chosen_item.val} Mana)")
+        chosen_item.apply_effect(player)
+        print(f"\nYou picked up: {chosen_item.name} (+{chosen_item.val})")
+        player.draw_health_bar()
         player.draw_mana_bar()
     else:
         print("Invalid choice. No item selected.")
